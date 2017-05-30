@@ -114,7 +114,25 @@ for(var i = 0; i < 6; i++) {
     .attr('width', width)
     .attr('height', 1000)
     .attr('fill', palette['cl'+i]);
+
+
+  // var letter = svg.append('rect')
+  //   .attr('x', 0)
+  //   .attr('y', 0)
+  //   .attr('width', 100)
+  //   .attr('height', 100)
+  //   .attr('fill', 'none')
+  //   .append('text')
+  //   .attr('class', 'element');
 }
+
+var body = d3.select('body');
+var letters = body.append('div')
+  .attr('class', 'letter')
+  .attr('style', 'white-space:pre')
+
+var stringData = ["N —^1000\nThe sky rubs itself pink and fragrant this morning.^1000 \nThe pealing bells for church, the happiness of trees that burst \nalong the rim of hills, between or really along the ramshackle homes — \nsomething wild still.^1000 \nThe windows catch the low perpendicular sunlight like eyes glowing in a dark wood.^1000 \nOr something fiercer: a heart burning, just before the shot.^5000", "Is even a single ugly pigeon swooping \nagainst the rusted roofs unknown to you?^5000", "The sun casts itself evenly over the hills now.^1000 \nCast — casting a line, a net: \nall are metaphors for prey and prayer.^5000", "(And tell me, what do I write, \nsince you have robbed me of my disquiet?)^5000"]
+typedJS(stringData, 9)
 
 //////////////// Construct Windows ////////////////////////////////////////////
 
@@ -364,8 +382,6 @@ function layer3Bridge(layerIndex) {
   //   .attr('dur', trainDuration)
   //   .attr('repeatCount', 'indefinite')
 
-  
-
   var animateTrain = train.append('animate')
     .attr('attributeName', 'x')
     .attr('from', width)
@@ -461,4 +477,13 @@ function getRandomData(max, data) {
     dataset.push(data);
   }
   return dataset;
+}
+
+function typedJS(strings, typeSpeed) {
+  document.addEventListener('DOMContentLoaded', function(){
+          Typed.new('.letter', {
+            strings: strings,
+            typeSpeed: typeSpeed
+          });
+      });
 }
